@@ -242,6 +242,9 @@ install(){
 uninstall(){
 	uninstallgetdir #获取lucky安装路径
 
+
+	systemctl start $luckPathSuff.service >/dev/null 2>&1 &
+
 	#结束进程
 	PID=$(pidof lucky) && [ -n "$PID" ] &&  kill -9 $PID >/dev/null 2>&1
 
