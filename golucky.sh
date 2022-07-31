@@ -155,7 +155,8 @@ else
 			type nohup >/dev/null 2>&1 && nohup=nohup
 			$nohup $luckydir/lucky -c "$luckydir/lucky.conf" >/dev/null 2>&1 &
 		else
-			service $luckPathSuff.service start
+			systemctl enable $luckPathSuff.service
+			systemctl start $luckPathSuff.service
 		fi
     else
         #设为保守模式启动
