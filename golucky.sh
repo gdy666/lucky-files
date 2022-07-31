@@ -148,11 +148,14 @@ else
 		echo "sysdir:"$sysdir
         mv $luckydir/scripts/lucky.service $sysdir/$luckPathSuff.service
         sed -i "s%/etc/lucky%$luckydir%g" $sysdir/$luckPathSuff.service
+		chmod 000 $sysdir/$luckPathSuff.service
         systemctl daemon-reload
 		if [  ! $? = 0 ];then
 			echo "systemctl daemon-reload 出错， 转为保守模式，保守模式可能无法自动开机启动"
 			type nohup >/dev/null 2>&1 && nohup=nohup
 			$nohup $luckydir/lucky -c "$luckydir/lucky.conf" >/dev/null 2>&1 &
+		else
+			service $luckPathSuff.service start
 		fi
     else
         #设为保守模式启动
