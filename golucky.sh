@@ -2,6 +2,8 @@
 # Copyright (C) gdy666
 # http://192.168.31.70:9999/install_v2.sh
 # wget -q -O /tmp/install.sh http://192.168.31.70:9999/install_v2.sh  && sh /tmp/install.sh 
+#wget -q -O /tmp/install.sh https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main/golucky.sh  && sh /tmp/install.sh https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main 1.1.3
+
 
 echo='echo -e' && [ -n "$(echo -e|grep e)" ] && echo=echo
 #[ -z "$1" ] && test=0 || test=$1
@@ -57,22 +59,21 @@ dir_avail(){
 webget(){
 	#参数【$1】代表下载目录，【$2】代表在线地址
 	#参数【$3】代表输出显示，【$4】不启用重定向
-	if curl --version > /dev/null 2>&1;then
-		[ "$3" = "echooff" ] && progress='-s' || progress='-#'
-		[ -z "$4" ] && redirect='-L' || redirect=''
-		result=$(curl -w %{http_code} --connect-timeout 5 $progress $redirect -ko $1 $2)
-		[ -n "$(echo $result | grep -e ^2)" ] && result="200"
-	else
-		if wget --version > /dev/null 2>&1;then
-			[ "$3" = "echooff" ] && progress='-q' || progress='-q --show-progress'
-			[ "$4" = "rediroff" ] && redirect='--max-redirect=0' || redirect=''
-			certificate='--no-check-certificate'
-			timeout='--timeout=3'
-		fi
+	if wget --version > /dev/null 2>&1;then
+		[ "$4" = "rediroff" ] && redirect='--max-redirect=0' || redirect=''
+		certificate='--no-check-certificate'
+		timeout='--timeout=3'
 		[ "$3" = "echoon" ] && progress=''
 		[ "$3" = "echooff" ] && progress='-q'
 		wget $progress $redirect $certificate $timeout -O $1 $2 
 		[ $? -eq 0 ] && result="200"
+	else 
+		if curl --version > /dev/null 2>&1;then
+			[ "$3" = "echooff" ] && progress='-s' || progress='-#'
+			[ -z "$4" ] && redirect='-L' || redirect=''
+			result=$(curl -w %{http_code} --connect-timeout 5 $progress $redirect -ko $1 $2)
+			[ -n "$(echo $result | grep -e ^2)" ] && result="200"
+		fi
 	fi
 }
 
