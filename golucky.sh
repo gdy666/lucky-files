@@ -134,7 +134,7 @@ installStartDaemon(){
 	echo "设为保守模式启动"
 	type nohup >/dev/null 2>&1 && nohup=nohup
 	$nohup $luckydir/lucky -c "$luckydir/lucky.conf" >/dev/null 2>&1 &
-	cronset '#lucky保守模式守护进程' "*/1 * * * * test -z \"\$(pidof lucky)\" && $luckydir/lucky -c $luckydir/lucky.conf #lucky保守模式守护进程"
+	cronset '#lucky保守模式守护进程' "*/1 * * * * test -z \"\$(pidof lucky)\" && $luckydir/lucky -c $luckydir/lucky.conf & #lucky保守模式守护进程"
 }
 
 installSetInit(){
@@ -266,7 +266,16 @@ install(){
 
 	echo "检测超时，请自行检查lucky运行情况"
 
+	read -p "是否使用保守模式(1/0)?" res
+	if [ "$res" = "1" ] ;then
+		installStartDaemon
+	fi
 
+	i=0
+	while [ "$i" -lt 10 ];do
+		sleep 1
+		PID=$(pidof lucky) && [ -n "$PID" ] && echo "lucky已成功运行" && exit 0 && i=10 ||  i=$((i+1))
+	done
 
 }
 
