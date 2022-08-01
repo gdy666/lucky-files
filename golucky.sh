@@ -130,6 +130,13 @@ getLinuxSysType(){
 
 }
 
+installStartDaemon(){
+	echo "设为保守模式启动"
+	type nohup >/dev/null 2>&1 && nohup=nohup
+	$nohup $luckydir/lucky -c "$luckydir/lucky.conf" >/dev/null 2>&1 &
+	cronset '#lucky保守模式守护进程' "*/1 * * * * test -z \"\$(pidof lucky)\" && $luckydir/lucky -c $luckydir/lucky.conf #lucky保守模式守护进程"
+}
+
 installSetInit(){
 	#判断系统类型写入不同的启动文件
 if [ -f /etc/rc.common ];then
@@ -152,19 +159,15 @@ else
 		chmod 000 $sysdir/$luckPathSuff.service
         systemctl daemon-reload
 		if [  ! $? = 0 ];then
-			echo "systemctl daemon-reload 出错， 转为保守模式，保守模式可能无法自动开机启动"
-			type nohup >/dev/null 2>&1 && nohup=nohup
-			$nohup $luckydir/lucky -c "$luckydir/lucky.conf" >/dev/null 2>&1 &
+			echo "systemctl daemon-reload 出错， 转为保守模式..."
+			installStartDaemon
 		else
 			systemctl enable $luckPathSuff.service
 			systemctl start $luckPathSuff.service
 		fi
     else
-        #设为保守模式启动
-        echo "设为保守模式启动"
-		type nohup >/dev/null 2>&1 && nohup=nohup
-		$nohup $luckydir/lucky -c "$luckydir/lucky.conf" >/dev/null 2>&1 &
-
+    #设为保守模式启动
+	installStartDaemon
     fi
 fi
 
@@ -223,6 +226,31 @@ fi
 
 }
 
+croncmd(){
+	if [ -n "$(crontab -h 2>&1 | grep '\-l')" ];then
+		crontab $1
+	else
+		crondir="$(crond -h 2>&1 | grep -oE 'Default:.*' | awk -F ":" '{print $2}')"
+		[ ! -w "$crondir" ] && crondir="/etc/storage/cron/crontabs"
+		[ ! -w "$crondir" ] && crondir="/var/spool/cron/crontabs"
+		[ ! -w "$crondir" ] && crondir="/var/spool/cron"
+		[ ! -w "$crondir" ] && echo "你的设备不支持定时任务配置"
+		[ "$1" = "-l" ] && cat $crondir/$USER 2>/dev/null
+		[ -f "$1" ] && cat $1 > $crondir/$USER
+	fi
+}
+
+cronset(){
+	# 参数1代表要移除的关键字,参数2代表要添加的任务语句
+	tmpcron=/tmp/cron_$USER
+	croncmd -l > $tmpcron 
+	sed -i "/$1/d" $tmpcron
+	sed -i '/^$/d' $tmpcron
+	echo "$2" >> $tmpcron
+	croncmd $tmpcron
+	rm -f $tmpcron
+}
+
 install(){
 	getTargetFileURL
 	setdir	#设置安装路径
@@ -237,6 +265,8 @@ install(){
 	done
 
 	echo "检测超时，请自行检查lucky运行情况"
+
+
 
 }
 
@@ -281,6 +311,8 @@ uninstall(){
 
 	sed -i '/alias lucky=*/'d $profile
 	sed -i '/export luckydir=*/'d $profile
+
+	cronset '#lucky保守模式守护进程' #删除保守模式定时
 
 }
 
