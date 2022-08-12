@@ -17,32 +17,32 @@ opkg update && opkg install curl #如已安装请忽略
 ~**使用curl安装**：<br>
 ```Shell
 #fastgit.org加速
-curl -o /tmp/install.sh   https://raw.fastgit.org/gdy666/lucky-files/main/golucky.sh  && sh /tmp/install.sh https://raw.fastgit.org/gdy666/lucky-files/main 1.2.2
+curl -o /tmp/install.sh   https://raw.fastgit.org/gdy666/lucky-files/main/golucky.sh  && sh /tmp/install.sh https://raw.fastgit.org/gdy666/lucky-files/main 1.2.3
 ```
 
 
 
 ```shell
 #jsDelivrCDN源
-curl -o /tmp/install.sh  https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main/golucky.sh  && sh /tmp/install.sh https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main 1.2.2
+curl -o /tmp/install.sh  https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main/golucky.sh  && sh /tmp/install.sh https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main 1.2.3
 ```
 
 ```shell
 #作者私人源
-curl -o /tmp/install.sh http://cf.gdy666.com/golucky.sh  && sh /tmp/install.sh http://cf.gdy666.com 1.2.2
+curl -o /tmp/install.sh http://cf.gdy666.com/golucky.sh  && sh /tmp/install.sh http://cf.gdy666.com 1.2.3
 ```
 
 ~**使用wget安装**：<br>
 
 ```shell
 #fastgit.org加速
-wget -O /tmp/install.sh https://raw.fastgit.org/gdy666/lucky-files/main/golucky.sh  && sh /tmp/install.sh https://raw.fastgit.org/gdy666/lucky-files/main/ 1.2.2
+wget -O /tmp/install.sh https://raw.fastgit.org/gdy666/lucky-files/main/golucky.sh  && sh /tmp/install.sh https://raw.fastgit.org/gdy666/lucky-files/main/ 1.2.3
 ```
 
 
 ```shell
 #jsDelivrCDN源
-wget -O /tmp/install.sh https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main/golucky.sh  && sh /tmp/install.sh https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main  1.2.2
+wget -O /tmp/install.sh https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main/golucky.sh  && sh /tmp/install.sh https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main  1.2.3
 ```
 
 
@@ -51,7 +51,7 @@ wget -O /tmp/install.sh https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main/g
 
 ```Shell
 #作者私人http源
-wget -O /tmp/install.sh http://cf.gdy666.com/golucky.sh  && sh /tmp/install.sh http://cf.gdy666.com 1.2.2
+wget -O /tmp/install.sh http://cf.gdy666.com/golucky.sh  && sh /tmp/install.sh http://cf.gdy666.com 1.2.3
 ```
 
 ~**运行时的额外依赖**：<br>
