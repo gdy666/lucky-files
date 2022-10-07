@@ -286,6 +286,7 @@ uninstall(){
 	uninstallgetdir #获取lucky安装路径
 
 
+	systemctl disable $luckPathSuff.service >/dev/null 2>&1 &
 	systemctl stop $luckPathSuff.service >/dev/null 2>&1 &
 
 	#结束进程
