@@ -19,14 +19,14 @@ opkg update && opkg install curl #如已安装请忽略
 ~**使用curl安装**：<br>
 ```Shell
 #fastgit.org加速
-curl -o /tmp/install.sh   https://raw.fastgit.org/gdy666/lucky-files/main/golucky.sh  && sh /tmp/install.sh https://raw.fastgit.org/gdy666/lucky-files/main 1.6.0
+curl -o /tmp/install.sh   https://raw.fastgit.org/gdy666/lucky-files/main/golucky.sh  && sh /tmp/install.sh https://raw.fastgit.org/gdy666/lucky-files/main 1.6.1
 ```
 
 
 
 ```shell
 #jsDelivrCDN源
-curl -o /tmp/install.sh  https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main/golucky.sh  && sh /tmp/install.sh https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main 1.6.0
+curl -o /tmp/install.sh  https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main/golucky.sh  && sh /tmp/install.sh https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main 1.6.1
 ```
 
 
@@ -35,13 +35,13 @@ curl -o /tmp/install.sh  https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main/
 
 ```shell
 #fastgit.org加速
-wget -O /tmp/install.sh https://raw.fastgit.org/gdy666/lucky-files/main/golucky.sh  && sh /tmp/install.sh https://raw.fastgit.org/gdy666/lucky-files/main/ 1.6.0
+wget -O /tmp/install.sh https://raw.fastgit.org/gdy666/lucky-files/main/golucky.sh  && sh /tmp/install.sh https://raw.fastgit.org/gdy666/lucky-files/main/ 1.6.1
 ```
 
 
 ```shell
 #jsDelivrCDN源
-wget -O /tmp/install.sh https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main/golucky.sh  && sh /tmp/install.sh https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main  1.6.0
+wget -O /tmp/install.sh https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main/golucky.sh  && sh /tmp/install.sh https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main  1.6.1
 ```
 
 
