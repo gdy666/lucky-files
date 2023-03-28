@@ -350,7 +350,7 @@ if [ -n "$systype" ];then
 	[ "$systype" = "mi_snapshot" ] && dir=/data
 else
 	echo -----------------------------------------------
-	$echo "\033[33m安装lucky至少需要预留约3MB的磁盘空间\033[0m"	
+	$echo "\033[33m安装lucky至少需要预留约6MB的磁盘空间\033[0m"	
 	$echo " 1 在\033[32m/etc目录\033[0m下安装(适合root用户)"
 	$echo " 2 在\033[32m/usr/share目录\033[0m下安装(适合Linux设备)"
 	$echo " 3 在\033[32m当前用户目录\033[0m下安装(适合非root用户)"
