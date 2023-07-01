@@ -166,23 +166,23 @@ fi
 		}
 	#小米镜像化OpenWrt额外设置
 	if [ "$systype" = "mi_snapshot" ]; then
-    if [ "$dir" = "/data" ]; then
-        echo '执行小米镜像化OpenWrt额外设置'
-        chmod 755 $luckydir/scripts/misnap_init.sh
-        uci set firewall.Lucky=include
-        uci set firewall.Lucky.type='script'
-        uci set firewall.Lucky.path='/data/lucky.daji/scripts/misnap_init.sh'
-        uci set firewall.Lucky.enabled='1'
-        uci commit firewall
-    fi
-	else
-		echo '执行小米10K镜像化OpenWrt额外设置'
-		chmod 755 $luckydir/scripts/misnap_10k_init.sh
-		uci set firewall.Lucky=include
-		uci set firewall.Lucky.type='script'
-		uci set firewall.Lucky.path='/data/userdisk/lucky.daji/scripts/misnap_10k_init.sh'
-		uci set firewall.Lucky.enabled='1'
-		uci commit firewall
+		if [ "$dir" = "/data" ]; then
+			echo '执行小米镜像化OpenWrt额外设置'
+			chmod 755 $luckydir/scripts/misnap_init.sh
+			uci set firewall.Lucky=include
+			uci set firewall.Lucky.type='script'
+			uci set firewall.Lucky.path='/data/lucky.daji/scripts/misnap_init.sh'
+			uci set firewall.Lucky.enabled='1'
+			uci commit firewall
+   	 	else
+			echo '执行小米10K镜像化OpenWrt额外设置'
+			chmod 755 $luckydir/scripts/misnap_10k_init.sh
+			uci set firewall.Lucky=include
+			uci set firewall.Lucky.type='script'
+			uci set firewall.Lucky.path='/data/userdisk/lucky.daji/scripts/misnap_10k_init.sh'
+			uci set firewall.Lucky.enabled='1'
+			uci commit firewall
+    	fi
 	fi
 
 }
