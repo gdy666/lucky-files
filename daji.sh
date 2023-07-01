@@ -165,12 +165,22 @@ fi
 		
 		}
 	#小米镜像化OpenWrt额外设置
-	if [ "$systype" = "mi_snapshot" ];then
+	if [ "$systype" = "mi_snapshot" ]; then
+    if [ "$dir" = "/data" ]; then
         echo '执行小米镜像化OpenWrt额外设置'
-		chmod 755 $luckydir/scripts/misnap_init.sh
+        chmod 755 $luckydir/scripts/misnap_init.sh
+        uci set firewall.Lucky=include
+        uci set firewall.Lucky.type='script'
+        uci set firewall.Lucky.path='/data/lucky.daji/scripts/misnap_init.sh'
+        uci set firewall.Lucky.enabled='1'
+        uci commit firewall
+    fi
+	else
+		echo '执行小米10K镜像化OpenWrt额外设置'
+		chmod 755 $luckydir/scripts/misnap_10k_init.sh
 		uci set firewall.Lucky=include
 		uci set firewall.Lucky.type='script'
-		uci set firewall.Lucky.path='/data/lucky.daji/scripts/misnap_init.sh'
+		uci set firewall.Lucky.path='/data/userdisk/lucky.daji/scripts/misnap_10k_init.sh'
 		uci set firewall.Lucky.enabled='1'
 		uci commit firewall
 	fi
@@ -362,11 +372,15 @@ selectLuckyFile(){
 setdir(){
 	echo -----------------------------------------------
 	$echo "\033[33m安装lucky至少需要预留约6MB的磁盘空间\033[0m"	
-	$echo " 1 在\033[32m/etc目录\033[0m下安装(适合root用户)"
-	$echo " 2 在\033[32m/usr/share目录\033[0m下安装(适合Linux设备)"
+	$echo " 1 在\033[32m/etc\033[0m 目录下安装(适合root用户)"
+	$echo " 2 在\033[32m/usr/share\033[0m目录下安装(适合Linux设备)"
 	$echo " 3 在\033[32m当前用户目录\033[0m下安装(适合非root用户)"
-	$echo " 4 手动设置安装目录"
-	
+	$echo " 4 在\033[32m/data\033[0m目录(小米官方路由系统)"
+	$echo " 5 在\033[32m/data/userdisk \033[0m目录(小米官方路由系统.万兆)"
+	$echo " 6 在\033[32m/jffs\033[0m目录(华硕/梅林)"
+	$echo " 7 在\033[32m/etc/storage目录\033[0m(Padavan)"
+	$echo " 8 手动设置安装目录"
+
 	if [ -n "$dir" ];then
 	 $echo " 5 在\033[32m""$dir""\033[0m(当前路由器环境推荐目录下安装)"
 	fi
@@ -385,6 +399,14 @@ setdir(){
 	elif [ "$num" = "3" ];then
 		dir=~/.local/share
 	elif [ "$num" = "4" ];then
+		dir=/data
+	elif [ "$num" = "5" ];then
+		dir=/data/userdisk
+	elif [ "$num" = "6" ];then
+		dir=/jffs
+	elif [ "$num" = "7" ];then
+		dir=/jffs
+	elif [ "$num" = "8" ];then
 		echo -----------------------------------------------
 		echo '可用路径 剩余空间:'
 		df -h | awk '{print $6,$4}'| sed 1d 
