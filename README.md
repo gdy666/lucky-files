@@ -18,6 +18,19 @@ opkg update && opkg install curl #如已安装请忽略
 
 ~**使用curl安装**：<br>
 
+```
+    新增半自动离线安装lucky的脚本 daji.sh
+    将daji.sh下载上传到 /tmp/目录下
+    执行
+    chmod +x daji.sh  
+    赋予执行权限，然后运行
+    sh daji.sh
+    查看当前CPU架构，根据CPU架构选择合适的lucky tar.gz文件上传到/tmp目录下。
+    再次执行sh daji.sh 选择1根据提示安装即可。
+
+```
+
+
 ```Shell
 #私人源
 curl -o /tmp/install.sh   http://cdn001.gdy666.com/lucky-files/golucky.sh  && sh /tmp/install.sh http://cdn001.gdy666.com/lucky-files 1.10.8
