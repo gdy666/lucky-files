@@ -90,11 +90,14 @@ setcpucore(){
 	fi
 }
 
+version='2.1.3'
+cdnurl='https://ghproxy.com/https://raw.githubusercontent.com/gdy666/lucky-files/main'
 getTargetFileURL(){
     #download_url=$cdnurl'/dist/lucky_'$version'_Linux_'$cpucore'.tar.gz'
 	#https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main/1.1.3/lucky_1.1.3_Linux_i386.tar.gz
 	download_url=$cdnurl'/'$version'/lucky_'$version'_Linux_'$cpucore'.tar.gz'
-    echo "目标文件下载链接:"$download_url
+    #echo "目标文件下载链接:"$download_url
+    wget $download_url || curl -O $download_url
 }
 
 
