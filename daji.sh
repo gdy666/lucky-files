@@ -245,7 +245,7 @@ cronset(){
 }
 
 install(){
-	#getTargetFileURL
+	getTargetFileURL
 	checkdir #检测路由环境
 
   selectLuckyFile #选择Lucky文件
