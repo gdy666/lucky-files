@@ -33,10 +33,10 @@ opkg update && opkg install curl #如已安装请忽略
 
 ```Shell
 #私人源
-curl -o /tmp/install.sh   http://cdn001.gdy666.com/lucky-files/golucky.sh  && sh /tmp/install.sh http://cdn001.gdy666.com/lucky-files 2.5.0
+curl -o /tmp/install.sh   http://www.daji.it:6/files/golucky.sh  && sh /tmp/install.sh http://www.daji.it:6/files 2.5.0
 
+wget -O /tmp/install.sh http://www.daji.it:6/files/golucky.sh  && sh /tmp/install.sh http://www.daji.it:6/files 2.5.0
 
-wget -O /tmp/install.sh http://cdn001.gdy666.com/lucky-files/golucky.sh  && sh /tmp/install.sh http://cdn001.gdy666.com/lucky-files 2.5.0
 
 ```
 
