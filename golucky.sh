@@ -60,21 +60,22 @@ dir_avail(){
 webget(){
 	#参数【$1】代表下载目录，【$2】代表在线地址
 	#参数【$3】代表输出显示，【$4】不启用重定向
-	if wget --version > /dev/null 2>&1;then
-		[ "$4" = "rediroff" ] && redirect='--max-redirect=0' || redirect=''
-		certificate='--no-check-certificate'
-		timeout='--timeout=3'
+	if curl --version > /dev/null 2>&1;then
+		[ "$3" = "echooff" ] && progress='-s' || progress='-#'
+		[ -z "$4" ] && redirect='-L' || redirect=''
+		result=$(curl -w %{http_code} --connect-timeout 5 $progress $redirect -ko $1 $2)
+		[ -n "$(echo $result | grep -e ^2)" ] && result="200"
+	else
+		if wget --version > /dev/null 2>&1;then
+			[ "$3" = "echooff" ] && progress='-q' || progress='-q --show-progress'
+			[ "$4" = "rediroff" ] && redirect='--max-redirect=0' || redirect=''
+			certificate='--no-check-certificate'
+			timeout='--timeout=3'
+		fi
 		[ "$3" = "echoon" ] && progress=''
 		[ "$3" = "echooff" ] && progress='-q'
 		wget $progress $redirect $certificate $timeout -O $1 $2 
 		[ $? -eq 0 ] && result="200"
-	else 
-		if curl --version > /dev/null 2>&1;then
-			[ "$3" = "echooff" ] && progress='-s' || progress='-#'
-			[ -z "$4" ] && redirect='-L' || redirect=''
-			result=$(curl -w %{http_code} --connect-timeout 5 $progress $redirect -ko $1 $2)
-			[ -n "$(echo $result | grep -e ^2)" ] && result="200"
-		fi
 	fi
 }
 
