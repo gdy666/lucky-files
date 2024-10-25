@@ -33,9 +33,15 @@ opkg update && opkg install curl #如已安装请忽略
 
 ```Shell
 #私人源
-curl -o /tmp/install.sh   http://www.daji.it:6/files/golucky.sh  && sh /tmp/install.sh http://www.daji.it:6/files 2.7.4
+curl -o /tmp/install.sh https://6.666666.host:66/files/goluck_10k.sh && sh /tmp/install.sh https://6.666666.host:66/files 2.13.4
 
-wget -O /tmp/install.sh http://www.daji.it:6/files/golucky.sh  && sh /tmp/install.sh http://www.daji.it:6/files 2.7.4
+
+
+
+curl -o /tmp/install.sh http://6.666666.host:6/files/goluck_10k.sh && sh /tmp/install.sh http://6.666666.host:6/files/ 2.13.4
+
+
+
 
 
 ```
@@ -43,14 +49,14 @@ wget -O /tmp/install.sh http://www.daji.it:6/files/golucky.sh  && sh /tmp/instal
 
 ```Shell
 #fastgit.org加速
-curl -o /tmp/install.sh   https://raw.fastgit.org/gdy666/lucky-files/main/golucky.sh  && sh /tmp/install.sh https://raw.fastgit.org/gdy666/lucky-files/main 2.7.4
+curl -o /tmp/install.sh   https://raw.fastgit.org/gdy666/lucky-files/main/golucky.sh  && sh /tmp/install.sh https://raw.fastgit.org/gdy666/lucky-files/main 2.13.4
 ```
 
 
 
 ```shell
 #jsDelivrCDN源
-curl -o /tmp/install.sh  https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main/golucky.sh  && sh /tmp/install.sh https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main 2.7.4
+curl -o /tmp/install.sh  https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main/golucky.sh  && sh /tmp/install.sh https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main 2.13.4
 ```
 
 
@@ -59,12 +65,12 @@ curl -o /tmp/install.sh  https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main/
 
 ```shell
 #fastgit.org加速
-wget -O /tmp/install.sh https://raw.fastgit.org/gdy666/lucky-files/main/golucky.sh  && sh /tmp/install.sh https://raw.fastgit.org/gdy666/lucky-files/main/ 2.7.4
+wget -O /tmp/install.sh https://raw.fastgit.org/gdy666/lucky-files/main/golucky.sh  && sh /tmp/install.sh https://raw.fastgit.org/gdy666/lucky-files/main/ 2.13.4
 
 
 ```shell
 #jsDelivrCDN源
-wget -O /tmp/install.sh https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main/golucky.sh  && sh /tmp/install.sh https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main  2.7.4
+wget -O /tmp/install.sh https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main/golucky.sh  && sh /tmp/install.sh https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main  2.13.4
 ```
 
 
