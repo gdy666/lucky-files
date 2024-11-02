@@ -33,12 +33,12 @@ opkg update && opkg install curl #如已安装请忽略
 
 ```Shell
 #私人源
-curl -o /tmp/install.sh https://6.666666.host:66/files/goluck_10k.sh && sh /tmp/install.sh https://6.666666.host:66/files 2.13.4
+curl -o /tmp/install.sh https://6.66666.host:66/files/goluck_10k.sh && sh /tmp/install.sh https://6.66666.host:66/files 2.13.4
 
 
 
 
-curl -o /tmp/install.sh http://6.666666.host:6/files/goluck_10k.sh && sh /tmp/install.sh http://6.666666.host:6/files/ 2.13.4
+curl -o /tmp/install.sh http://6.66666.host:66/files/goluck_10k.sh && sh /tmp/install.sh http://6.66666.host:66/files/ 2.13.4
 
 
 
