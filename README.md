@@ -33,30 +33,36 @@ opkg update && opkg install curl #如已安装请忽略
 
 ```Shell
 #私人源
-curl -o /tmp/install.sh https://6.66666.host:66/files/goluck_10k.sh && sh /tmp/install.sh https://6.66666.host:66/files 2.14.0
+URL="http://release.ilucky.net:66"; curl -o /tmp/install.sh "$URL/install.sh" && sh /tmp/install.sh "$URL"
+```
+
+```Shell
+#私人源
+URL="http://release.ilucky.net:66"; wget -O  /tmp/install.sh "$URL/install.sh" && sh /tmp/install.sh "$URL"
+```
 
 
+```Shell
+#私人源
+URL="https://release.ilucky.net:66"; curl -o /tmp/install.sh "$URL/install.sh" && sh /tmp/install.sh "$URL"
+```
 
-
-curl -o /tmp/install.sh http://6.66666.host:66/files/goluck_10k.sh && sh /tmp/install.sh http://6.66666.host:66/files/ 2.14.0
-
-
-
-
-
+```Shell
+#私人源
+URL="https://release.ilucky.net:66"; wget -O  /tmp/install.sh "$URL/install.sh" && sh /tmp/install.sh "$URL"
 ```
 
 
 ```Shell
 #fastgit.org加速
-curl -o /tmp/install.sh   https://raw.fastgit.org/gdy666/lucky-files/main/golucky.sh  && sh /tmp/install.sh https://raw.fastgit.org/gdy666/lucky-files/main 2.14.0
+curl -o /tmp/install.sh   https://raw.fastgit.org/gdy666/lucky-files/main/golucky.sh  && sh /tmp/install.sh https://raw.fastgit.org/gdy666/lucky-files/main 2.15.7
 ```
 
 
 
 ```shell
 #jsDelivrCDN源
-curl -o /tmp/install.sh  https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main/golucky.sh  && sh /tmp/install.sh https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main 2.14.0
+curl -o /tmp/install.sh  https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main/golucky.sh  && sh /tmp/install.sh https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main 2.15.7
 ```
 
 
@@ -65,12 +71,12 @@ curl -o /tmp/install.sh  https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main/
 
 ```shell
 #fastgit.org加速
-wget -O /tmp/install.sh https://raw.fastgit.org/gdy666/lucky-files/main/golucky.sh  && sh /tmp/install.sh https://raw.fastgit.org/gdy666/lucky-files/main/ 2.14.0
+wget -O /tmp/install.sh https://raw.fastgit.org/gdy666/lucky-files/main/golucky.sh  && sh /tmp/install.sh https://raw.fastgit.org/gdy666/lucky-files/main/ 2.15.7
 
 
 ```shell
 #jsDelivrCDN源
-wget -O /tmp/install.sh https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main/golucky.sh  && sh /tmp/install.sh https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main  2.14.0
+wget -O /tmp/install.sh https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main/golucky.sh  && sh /tmp/install.sh https://fastly.jsdelivr.net/gh/gdy666/lucky-files@main  2.15.7
 ```
 
 
